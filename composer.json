@@ -1,0 +1,27 @@
+{
+    "name": "paul-headington/OnyxLogger",
+    "keywords": ["Onyx", "Error Logger"],
+	"license": "MIT",
+	"require": {
+		"php": ">=5.4.0"
+	},
+    "authors": [
+        {
+            "name": "Paul Headington",
+            "email": "paul.headington@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.3.*",
+        "paul-headington/GetSet": "dev-master"
+    },
+    "autoload": {
+        "psr-0" : {
+            "Logger": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    }
+}
