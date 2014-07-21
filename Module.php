@@ -4,6 +4,7 @@ namespace OnyxLogger;
 use OnyxLogger\Model\Log;
 use OnyxLogger\Model\LogTable;
 use OnyxLogger\Service\Listener;
+use Zend\EventManager\EventInterface;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -25,8 +26,9 @@ class Module
     
     public function onBootstrap(EventInterface $e)
     {
+        $sm = $e->getTarget()->getServiceManager();
         $eventManager = $e->getTarget()->getEventManager();
-        $eventManager->attach(new Listener());
+        $eventManager->attach(new Listener($sm));
     }
 
     public function getConfig()

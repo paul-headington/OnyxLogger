@@ -38,79 +38,154 @@ namespace OnyxLogger\Model;
 class Log
 {
 
-    protected $_id = null;
+    use \GetSet\SetterGetter;
 
-    protected $_eventname = null;
+    public $id = null;
 
-    protected $_data = null;
+    public $eventname = null;
 
-    protected $_controller = null;
+    public $data = null;
 
-    protected $_action = null;
+    public $controller = null;
 
-    protected $_params = null;
+    public $action = null;
 
-    protected $_postdate = null;
+    public $params = null;
 
-    protected $_message = null;
+    public $postdate = null;
+
+    public $message = null;
 
     const filter = null;
 
     protected $validation = array(
         'id' => array(
             'required' => false,
-            'type' => 'int'
+            'name' => 'id',
+            'validators' => array(
+                array(
+                    'name' => 'not_empty'
+                ),
+                array(
+                    'name' => 'string_length',
+                    'options' => array(
+                        'min' => 1
+                    )
+                )
+            )
         ),
         'eventname' => array(
             'required' => false,
-            'type' => 'string'
+            'name' => 'eventname',
+            'validators' => array(
+                array(
+                    'name' => 'not_empty'
+                ),
+                array(
+                    'name' => 'string_length',
+                    'options' => array(
+                        'min' => 3
+                    )
+                )
+            )
         ),
         'data' => array(
             'required' => false,
-            'type' => 'string'
+            'name' => 'data',
+            'validators' => array(
+                array(
+                    'name' => 'not_empty'
+                ),
+                array(
+                    'name' => 'string_length',
+                    'options' => array(
+                        'min' => 3
+                    )
+                )
+            )
         ),
         'controller' => array(
             'required' => false,
-            'type' => 'string'
+            'name' => 'controller',
+            'validators' => array(
+                array(
+                    'name' => 'not_empty'
+                ),
+                array(
+                    'name' => 'string_length',
+                    'options' => array(
+                        'min' => 3
+                    )
+                )
+            )
         ),
         'action' => array(
             'required' => false,
-            'type' => 'string'
+            'name' => 'action',
+            'validators' => array(
+                array(
+                    'name' => 'not_empty'
+                ),
+                array(
+                    'name' => 'string_length',
+                    'options' => array(
+                        'min' => 3
+                    )
+                )
+            )
         ),
         'params' => array(
             'required' => false,
-            'type' => 'string'
+            'name' => 'params',
+            'validators' => array(
+                array(
+                    'name' => 'not_empty'
+                ),
+                array(
+                    'name' => 'string_length',
+                    'options' => array(
+                        'min' => 3
+                    )
+                )
+            )
         ),
         'postdate' => array(
             'required' => false,
-            'type' => ''
+            'name' => 'postdate',
+            'validators' => array(
+                
+            )
         ),
         'message' => array(
             'required' => false,
-            'type' => 'string'
+            'name' => 'message',
+            'validators' => array(
+                array(
+                    'name' => 'not_empty'
+                ),
+                array(
+                    'name' => 'string_length',
+                    'options' => array(
+                        'min' => 3
+                    )
+                )
+            )
         )
     );
 
     /**
      * build the model
      */
-    public function __construct($options)
+    public function __construct()
     {
-        if (is_array($options)) {
-        	$this->setOptions($options);
-        }
-        $this->filter = new Zend_Filter();
-        $this->filter->addFilter(new Zend_Filter_StripTags())
-        	->addFilter(new Zend_Filter_StripNewlines())
-        	->addFilter(new Zend_Filter_StringTrim());
     }
 
     /**
      * Validation selector
      */
-    public function whatValidation($name)
+    public function getValidation()
     {
-        return $this->validation[$name];
+        return $this->validation;
     }
 
     /**
