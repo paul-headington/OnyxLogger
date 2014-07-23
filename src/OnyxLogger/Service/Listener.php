@@ -44,25 +44,26 @@ class Listener implements ListenerAggregateInterface
 
     public function logError($e)
     {
+        $params = $e->getParams();
         $logTable = $this->getlogTable();
         $log = new Log();
-        if(isset($e->params['name'])){
-            $log->setEventname($e->params['name']);
+        if(isset($params['name'])){
+            $log->setEventname($params['name']);
         }else{
             $log->setEventname("Standard Error");
         }
-        if(isset($e->params['message'])){
-            $log->setMessage($e->params['message']);
+        if(isset($params['message'])){
+            $log->setMessage($params['message']);
         }else{
             $log->setMessage("Standard message");
         }
-        if(isset($e->params['data'])){
-            $log->setData(json_encode($e->params['data']));
+        if(isset($params['data'])){
+            $log->setData(json_encode($params['data']));
         }else{
             $log->setData(json_encode(array()));
         }
-        if(isset($e->params['params'])){
-            $log->setParams(json_encode($e->params['params']));
+        if(isset($params['params'])){
+            $log->setParams(json_encode($params['params']));
         }else{
             $log->setParams(json_encode(array()));
         }
