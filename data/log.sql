@@ -1,7 +1,7 @@
 /*
  Navicat MySQL Data Transfer
 
- Source Server         : Example Local
+ Source Server         : Business Sorter Local
  Source Server Type    : MySQL
  Source Server Version : 50537
  Source Host           : localhost
@@ -11,17 +11,17 @@
  Target Server Version : 50537
  File Encoding         : utf-8
 
- Date: 07/28/2014 09:27:12 AM
+ Date: 08/05/2014 16:10:47 PM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
---  Table structure for `log`
+--  Table structure for `onyx_log`
 -- ----------------------------
-DROP TABLE IF EXISTS `log`;
-CREATE TABLE `log` (
+DROP TABLE IF EXISTS `onyx_log`;
+CREATE TABLE `onyx_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `eventname` varchar(50) NOT NULL,
   `data` text NOT NULL,
@@ -31,6 +31,6 @@ CREATE TABLE `log` (
   `postdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `message` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 SET FOREIGN_KEY_CHECKS = 1;

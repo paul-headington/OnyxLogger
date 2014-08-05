@@ -49,7 +49,7 @@ class Module
                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Log());
-                    return new TableGateway('log', $dbAdapter, null, $resultSetPrototype);
+                    return new TableGateway('onyx_log', $dbAdapter, null, $resultSetPrototype);
                 },        
             ),
             
