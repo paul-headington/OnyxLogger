@@ -67,6 +67,12 @@ class Listener implements ListenerAggregateInterface
         }else{
             $log->setParams(json_encode(array()));
         }
+        if(isset($params['controller'])){
+            $log->setController($params['controller']);
+        }
+        if(isset($params['action'])){
+            $log->setAction($params['action']);
+        }
         $logTable->save($log);
         
     }
